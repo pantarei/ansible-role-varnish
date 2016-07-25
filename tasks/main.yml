@@ -1,0 +1,52 @@
+---
+# tasks file for hswong3i.varnish
+
+- name: apt-key add
+  apt_key:
+    url: "{{ item.url }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "present", url: "https://repo.varnish-cache.org/GPG-key.txt" }
+  notify: restart varnish
+  tags: hswong3i.varnish
+
+- name: apt-add-repository
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "present", repo: "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" }
+  notify: restart varnish
+  tags: hswong3i.varnish
+
+- name: apt-get install
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "latest", name: "varnish" }
+  notify: restart varnish
+  tags: hswong3i.varnish
+
+- name: copy templates
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ item.owner }}"
+    group: "{{ item.group }}"
+    mode: "{{ item.mode }}"
+  with_items:
+    - { src: "etc/default/varnish.j2", dest: "/etc/default/varnish", owner: "root", group: "root", mode: "0644" }
+    - { src: "etc/default/varnishlog.j2", dest: "/etc/default/varnishlog", owner: "root", group: "root", mode: "0644" }
+    - { src: "etc/default/varnishncsa.j2", dest: "/etc/default/varnishncsa", owner: "root", group: "root", mode: "0644" }
+    - { src: "etc/varnish/default.vcl.j2", dest: "/etc/varnish/default.vcl", owner: "root", group: "root", mode: "0644" }
+    - { src: "etc/varnish/secret.j2", dest: "/etc/varnish/secret", owner: "root", group: "root", mode: "0600" }
+  notify: restart varnish
+  tags: hswong3i.varnish
+
+- name: enable service
+  service:
+    name: "varnish"
+    enabled: "yes"
+  notify: restart varnish
+  tags: hswong3i.varnish

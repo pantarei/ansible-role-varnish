@@ -1,0 +1,7 @@
+---
+# handlers file for hswong3i.varnish
+
+- name: restart varnish
+  service:
+    name: "varnish"
+    state: "restarted"
