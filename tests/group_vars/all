@@ -1,3 +1,2 @@
 ---
-varnish_root_pass: "Aini2ouK"
-varnish_root_user: "root"
+varnish_secret: "5affc3f8-52f9-11e6-b616-b386a18a6187"
