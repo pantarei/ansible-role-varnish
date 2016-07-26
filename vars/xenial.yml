@@ -1,0 +1,8 @@
+---
+# vars file for hswong3i.varnish (xenial)
+
+_apt_key: []
+_apt_repository: []
+_apt: [
+  { state: "latest", name: "varnish" },
+]
