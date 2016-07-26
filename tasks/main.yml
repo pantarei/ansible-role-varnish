@@ -1,12 +1,15 @@
 ---
 # tasks file for hswong3i.varnish
 
+- name: include release specific variables
+  include_vars: "{{ ansible_distribution_release }}.yml"
+  tags: hswong3i.varnish
+
 - name: apt-key add
   apt_key:
     url: "{{ item.url }}"
     state: "{{ item.state }}"
-  with_items:
-    - { state: "present", url: "https://repo.varnish-cache.org/GPG-key.txt" }
+  with_items: "{{ _apt_key }}"
   notify: restart varnish
   tags: hswong3i.varnish
 
@@ -14,8 +17,7 @@
   apt_repository:
     repo: "{{ item.repo }}"
     state: "{{ item.state }}"
-  with_items:
-    - { state: "present", repo: "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" }
+  with_items: "{{ _apt_repository }}"
   notify: restart varnish
   tags: hswong3i.varnish
 
@@ -23,8 +25,7 @@
   apt:
     name: "{{ item.name }}"
     state: "{{ item.state }}"
-  with_items:
-    - { state: "latest", name: "varnish" }
+  with_items: "{{ _apt }}"
   notify: restart varnish
   tags: hswong3i.varnish
 
