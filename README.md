@@ -66,8 +66,8 @@ Role Variables
 <tr class="odd">
 <td>varnish_secret</td>
 <td>yes</td>
-<td></td>
 <td><a href="https://github.com/pantarei/ansible-role-varnish/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td></td>
 <td>Secret used for authorizing access to the management port.</td>
 </tr>
 <tr class="even">
@@ -80,8 +80,8 @@ Role Variables
 <tr class="odd">
 <td>varnish_backend</td>
 <td>yes</td>
-<td></td>
 <td><a href="https://github.com/pantarei/ansible-role-varnish/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td></td>
 <td>Backend servers providing the content Varnish will accelerate.</td>
 </tr>
 </tbody>
