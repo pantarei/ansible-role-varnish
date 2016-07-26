@@ -1,5 +1,5 @@
 Ansible Role for Varnish
-======================
+========================
 
 [![Build Status](https://travis-ci.org/pantarei/ansible-role-varnish.svg?branch=master)](https://travis-ci.org/pantarei/ansible-role-varnish)
 [![GitHub tag](https://img.shields.io/github/tag/pantarei/ansible-role-varnish.svg)](https://github.com/pantarei/ansible-role-varnish)
@@ -36,11 +36,53 @@ Role Variables
 </thead>
 <tbody>
 <tr class="odd">
-<td>varnish_root_pass</td>
+<td>varnish_admin_host</td>
+<td>yes</td>
+<td>127.0.0.1</td>
+<td></td>
+<td>Varnish management interface address.</td>
+</tr>
+<tr class="even">
+<td>varnish_admin_port</td>
+<td>yes</td>
+<td>6082</td>
+<td></td>
+<td>Varnish management interface port.</td>
+</tr>
+<tr class="odd">
+<td>varnish_listen_host</td>
+<td>yes</td>
+<td>127.0.0.1</td>
+<td></td>
+<td>Varnish client request interface address.</td>
+</tr>
+<tr class="even">
+<td>varnish_listen_port</td>
+<td>yes</td>
+<td>6082</td>
+<td></td>
+<td>Varnish client request interface port.</td>
+</tr>
+<tr class="odd">
+<td>varnish_secret</td>
 <td>yes</td>
 <td></td>
+<td><a href="https://github.com/pantarei/ansible-role-varnish/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td>Secret used for authorizing access to the management port.</td>
+</tr>
+<tr class="even">
+<td>varnish_storage</td>
+<td>yes</td>
+<td>malloc,256m</td>
 <td></td>
-<td>Default varnish root user password.</td>
+<td>Specified storage backend, default with memory based backend.</td>
+</tr>
+<tr class="odd">
+<td>varnish_backend</td>
+<td>yes</td>
+<td></td>
+<td><a href="https://github.com/pantarei/ansible-role-varnish/blob/master/defaults/main.yml">defaults/main.yml</a></td>
+<td>Backend servers providing the content Varnish will accelerate.</td>
 </tr>
 </tbody>
 </table>
