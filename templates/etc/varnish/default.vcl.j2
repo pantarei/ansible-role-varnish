@@ -15,10 +15,10 @@
 vcl 4.0;
 
 # Default backend definition. Set this to point to your content server.
-{% for key, value in varnish_backend.iteritems() %}
-backend {{ key }} {
-    .host = "{{ value.host }}";
-    .port = "{{ value.port }}";
+{% for item in varnish_backend %}
+backend {{ item.name }} {
+    .host = "{{ item.host }}";
+    .port = "{{ item.port }}";
 }
 {% endfor %}
 
