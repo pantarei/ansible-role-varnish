@@ -38,7 +38,7 @@ Role Variables
 <tr class="odd">
 <td>varnish_admin_host</td>
 <td>yes</td>
-<td>127.0.0.1</td>
+<td></td>
 <td></td>
 <td>Varnish management interface address.</td>
 </tr>
@@ -52,7 +52,7 @@ Role Variables
 <tr class="odd">
 <td>varnish_listen_host</td>
 <td>yes</td>
-<td>127.0.0.1</td>
+<td></td>
 <td></td>
 <td>Varnish client request interface address.</td>
 </tr>
