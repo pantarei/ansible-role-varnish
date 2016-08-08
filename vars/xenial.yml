@@ -1,8 +1,12 @@
 ---
 # vars file for hswong3i.varnish (xenial)
 
-_apt_key: []
-_apt_repository: []
+_apt_key: [
+  { state: "present", url: "https://repo.varnish-cache.org/GPG-key.txt" },
+]
+_apt_repository: [
+  { state: "present", repo: "deb https://repo.varnish-cache.org/ubuntu/ xenial varnish-4.1" },
+]
 _apt: [
   { state: "latest", name: "varnish" },
 ]
