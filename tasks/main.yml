@@ -47,7 +47,9 @@
 
 - name: enable service
   service:
-    name: "varnish"
-    enabled: "yes"
+    name: "{{ item.name }}"
+    enabled: "{{ item.enabled }}"
+  with_items:
+    - { name: "varnish", enabled: "yes" }
   notify: restart varnish
   tags: hswong3i.varnish

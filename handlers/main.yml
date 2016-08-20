@@ -3,5 +3,7 @@
 
 - name: restart varnish
   service:
-    name: "varnish"
-    state: "restarted"
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { name: "varnish", state: "restarted" }
