@@ -46,18 +46,6 @@
   notify: restart varnish
   tags: hswong3i.varnish
 
-- name: symlink file
-  file:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-    owner: "{{ item.owner }}"
-    group: "{{ item.group }}"
-    state: "{{ item.state }}"
-  with_items:
-    - { src: "/lib/systemd/system/varnish.service", dest: "/etc/systemd/system/varnish.service", owner: "root", group: "root", state: "link" }
-  notify: restart varnish
-  tags: hswong3i.varnish
-
 - name: enable service
   service:
     name: "{{ item.name }}"
