@@ -24,5 +24,6 @@ DAEMON_OPTS="-a {{ varnish_listen_host }}:{{ varnish_listen_port }} \
              -T {{ varnish_admin_host }}:{{ varnish_admin_port }} \
              -f /etc/varnish/default.vcl \
              -S /etc/varnish/secret \
-             -s {{ varnish_storage }}"
+             -s {{ varnish_storage }}
+             -p feature=+http2"
 
