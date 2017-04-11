@@ -2,10 +2,12 @@
 # vars file for hswong3i.varnish (trusty)
 
 _apt_key: [
-  { state: "present", url: "https://repo.varnish-cache.org/GPG-key.txt" },
+  { state: "absent", url: "https://repo.varnish-cache.org/GPG-key.txt" },
+  { state: "present", url: "https://packagecloud.io/varnishcache/varnish51/gpgkey" },
 ]
 _apt_repository: [
-  { state: "present", repo: "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" },
+  { state: "absent", repo: "deb https://repo.varnish-cache.org/ubuntu/ trusty varnish-4.1" },
+  { state: "present", repo: "deb https://packagecloud.io/varnishcache/varnish51/ubuntu/ trusty main" },
 ]
 _apt: [
   { state: "latest", name: "varnish" },
