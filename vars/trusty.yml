@@ -2,7 +2,6 @@
 # vars file for hswong3i.varnish (trusty)
 
 _apt_key: [
-  { state: "absent", url: "https://repo.varnish-cache.org/GPG-key.txt" },
   { state: "present", url: "https://packagecloud.io/varnishcache/varnish51/gpgkey" },
 ]
 _apt_repository: [
